@@ -1,7 +1,6 @@
 const db = require('../db/models')
 const { v4: uuidv4 } = require('uuid')
 const ac = require('../lib/roles')
-const cache = require('memory-cache')
 
 const getAllPlayers = async (req, res) => {
   const permission = await ac.can(req.user.role).readAny('players')
@@ -25,7 +24,6 @@ const getAllRooms = async (req, res) => {
   })
   res.json({ rooms })
 }
-
 
 module.exports = {
   getAllPlayers,
